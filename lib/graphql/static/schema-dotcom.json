@@ -7005,6 +7005,66 @@
           "href": "/graphql/reference/scalars#string"
         },
         {
+          "name": "ipAllowListEntries",
+          "description": "<p>The IP addresses of the app.</p>",
+          "type": "IpAllowListEntryConnection!",
+          "id": "ipallowlistentryconnection",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#ipallowlistentryconnection",
+          "arguments": [
+            {
+              "name": "after",
+              "description": "<p>Returns the elements in the list that come after the specified cursor.</p>",
+              "type": {
+                "name": "String",
+                "id": "string",
+                "kind": "scalars",
+                "href": "/graphql/reference/scalars#string"
+              }
+            },
+            {
+              "name": "before",
+              "description": "<p>Returns the elements in the list that come before the specified cursor.</p>",
+              "type": {
+                "name": "String",
+                "id": "string",
+                "kind": "scalars",
+                "href": "/graphql/reference/scalars#string"
+              }
+            },
+            {
+              "name": "first",
+              "description": "<p>Returns the first <em>n</em> elements from the list.</p>",
+              "type": {
+                "name": "Int",
+                "id": "int",
+                "kind": "scalars",
+                "href": "/graphql/reference/scalars#int"
+              }
+            },
+            {
+              "name": "last",
+              "description": "<p>Returns the last <em>n</em> elements from the list.</p>",
+              "type": {
+                "name": "Int",
+                "id": "int",
+                "kind": "scalars",
+                "href": "/graphql/reference/scalars#int"
+              }
+            },
+            {
+              "name": "orderBy",
+              "description": "<p>Ordering options for IP allow list entries returned.</p>",
+              "type": {
+                "name": "IpAllowListEntryOrder",
+                "id": "ipallowlistentryorder",
+                "kind": "input-objects",
+                "href": "/graphql/reference/input-objects#ipallowlistentryorder"
+              }
+            }
+          ]
+        },
+        {
           "name": "logoBackgroundColor",
           "description": "<p>The hex color code, without the leading '#', for the logo background.</p>",
           "type": "String!",
@@ -13541,6 +13601,14 @@
           "href": "/graphql/reference/scalars#boolean"
         },
         {
+          "name": "packageLabel",
+          "description": "<p>The original name of the package, as it appears in the manifest.</p>",
+          "type": "String!",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
           "name": "packageManager",
           "description": "<p>The dependency package manager.</p>",
           "type": "String",
@@ -13550,7 +13618,7 @@
         },
         {
           "name": "packageName",
-          "description": "<p>The required package name.</p>",
+          "description": "<p>The name of the package in the canonical form used by the package manager.\nThis may differ from the original textual form (see packageLabel), for example\nin a package manager that uses case-insensitive comparisons.</p>",
           "type": "String!",
           "id": "string",
           "kind": "scalars",
@@ -41422,6 +41490,56 @@
           "href": "/graphql/reference/scalars#datetime"
         },
         {
+          "name": "reactors",
+          "description": "<p>Reactors to the reaction subject with the emotion represented by this reaction group.</p>",
+          "type": "ReactorConnection!",
+          "id": "reactorconnection",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#reactorconnection",
+          "arguments": [
+            {
+              "name": "after",
+              "description": "<p>Returns the elements in the list that come after the specified cursor.</p>",
+              "type": {
+                "name": "String",
+                "id": "string",
+                "kind": "scalars",
+                "href": "/graphql/reference/scalars#string"
+              }
+            },
+            {
+              "name": "before",
+              "description": "<p>Returns the elements in the list that come before the specified cursor.</p>",
+              "type": {
+                "name": "String",
+                "id": "string",
+                "kind": "scalars",
+                "href": "/graphql/reference/scalars#string"
+              }
+            },
+            {
+              "name": "first",
+              "description": "<p>Returns the first <em>n</em> elements from the list.</p>",
+              "type": {
+                "name": "Int",
+                "id": "int",
+                "kind": "scalars",
+                "href": "/graphql/reference/scalars#int"
+              }
+            },
+            {
+              "name": "last",
+              "description": "<p>Returns the last <em>n</em> elements from the list.</p>",
+              "type": {
+                "name": "Int",
+                "id": "int",
+                "kind": "scalars",
+                "href": "/graphql/reference/scalars#int"
+              }
+            }
+          ]
+        },
+        {
           "name": "subject",
           "description": "<p>The subject that was reacted to.</p>",
           "type": "Reactable!",
@@ -41477,7 +41595,9 @@
                 "href": "/graphql/reference/scalars#int"
               }
             }
-          ]
+          ],
+          "isDeprecated": true,
+          "deprecationReason": "<p>Reactors can now be mannequins, bots, and organizations. Use the <code>reactors</code> field instead. Removal on 2021-10-01 UTC.</p>"
         },
         {
           "name": "viewerHasReacted",
@@ -41486,6 +41606,80 @@
           "id": "boolean",
           "kind": "scalars",
           "href": "/graphql/reference/scalars#boolean"
+        }
+      ]
+    },
+    {
+      "name": "ReactorConnection",
+      "kind": "objects",
+      "id": "reactorconnection",
+      "href": "/graphql/reference/objects#reactorconnection",
+      "description": "<p>The connection type for Reactor.</p>",
+      "fields": [
+        {
+          "name": "edges",
+          "description": "<p>A list of edges.</p>",
+          "type": "[ReactorEdge]",
+          "id": "reactoredge",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#reactoredge"
+        },
+        {
+          "name": "nodes",
+          "description": "<p>A list of nodes.</p>",
+          "type": "[Reactor]",
+          "id": "reactor",
+          "kind": "unions",
+          "href": "/graphql/reference/unions#reactor"
+        },
+        {
+          "name": "pageInfo",
+          "description": "<p>Information to aid in pagination.</p>",
+          "type": "PageInfo!",
+          "id": "pageinfo",
+          "kind": "objects",
+          "href": "/graphql/reference/objects#pageinfo"
+        },
+        {
+          "name": "totalCount",
+          "description": "<p>Identifies the total count of items in the connection.</p>",
+          "type": "Int!",
+          "id": "int",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#int"
+        }
+      ]
+    },
+    {
+      "name": "ReactorEdge",
+      "kind": "objects",
+      "id": "reactoredge",
+      "href": "/graphql/reference/objects#reactoredge",
+      "description": "<p>Represents an author of a reaction.</p>",
+      "fields": [
+        {
+          "name": "cursor",
+          "description": "<p>A cursor for use in pagination.</p>",
+          "type": "String!",
+          "id": "string",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#string"
+        },
+        {
+          "name": "node",
+          "description": "<p>The author of the reaction.</p>",
+          "type": "Reactor!",
+          "id": "reactor",
+          "kind": "unions",
+          "href": "/graphql/reference/unions#reactor"
+        },
+        {
+          "name": "reactedAt",
+          "description": "<p>The moment when the user made the reaction.</p>",
+          "type": "DateTime!",
+          "id": "datetime",
+          "kind": "scalars",
+          "href": "/graphql/reference/scalars#datetime"
         }
       ]
     },
@@ -66844,6 +67038,11 @@
       "description": "<p>Types that can own an IP allow list.</p>",
       "possibleTypes": [
         {
+          "name": "App",
+          "id": "app",
+          "href": "/graphql/reference/objects#app"
+        },
+        {
           "name": "Enterprise",
           "id": "enterprise",
           "href": "/graphql/reference/objects#enterprise"
@@ -68015,6 +68214,35 @@
           "name": "Team",
           "id": "team",
           "href": "/graphql/reference/objects#team"
+        },
+        {
+          "name": "User",
+          "id": "user",
+          "href": "/graphql/reference/objects#user"
+        }
+      ]
+    },
+    {
+      "name": "Reactor",
+      "kind": "unions",
+      "id": "reactor",
+      "href": "/graphql/reference/unions#reactor",
+      "description": "<p>Types that can be assigned to reactions.</p>",
+      "possibleTypes": [
+        {
+          "name": "Bot",
+          "id": "bot",
+          "href": "/graphql/reference/objects#bot"
+        },
+        {
+          "name": "Mannequin",
+          "id": "mannequin",
+          "href": "/graphql/reference/objects#mannequin"
+        },
+        {
+          "name": "Organization",
+          "id": "organization",
+          "href": "/graphql/reference/objects#organization"
         },
         {
           "name": "User",
